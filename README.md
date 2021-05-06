@@ -1,2 +1,2 @@
 # Codeforces-Slove
-I sloved those problem on Codeforces
+I sloved those problems on Codeforces

@@ -11,21 +11,28 @@ using namespace std;
 void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);}
 
 void slove(){
-        ll n,k;cin>>n>>k;
+        ll n;
+        cin>>n;
+        vector<pair<ll,ll>>a;
+        ll mx=LONG_MIN,mi=LONG_MAX;
         for(int i=0;i<n;i++){
-          if(i>0){
-            cout<<" ";
+          ll l,k;
+          cin>>l>>k;
+          a.pb(mp(l,k));
+          if(l<mi){
+            mi=l;
           }
-          if(k>0){
-            cout<<(2*i+2)<<" "<<(2*i+1);
+          if(k>mx){
+            mx=k;
           }
-          else{
-            cout<<(2*i+1)<<" "<<(2*i+2);
-          }
-          --k;
         }
-        cout<<"\n";
-
+       for(int i=0;i<n;i++){
+         if(a[i].first==mi && a[i].second==mx){
+           cout<<i+1<<"\n";
+           return;
+         }
+       }
+       cout<<-1<<"\n";
 }
 
 int main()

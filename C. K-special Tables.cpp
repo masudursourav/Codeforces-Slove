@@ -11,20 +11,23 @@ using namespace std;
 void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);}
 
 void slove(){
-        ll n,k;cin>>n>>k;
-        for(int i=0;i<n;i++){
-          if(i>0){
-            cout<<" ";
+        ll n,k;
+        cin>>n>>k;
+        ll e=n*(k-1)+1;
+        ll ans=n*(2*e+(n-k+1)*(n-1))/2;
+        cout<<ans<<"\n";
+        ll d=1;
+        for(int i=1;i<=n;i++){
+          for(int j=1;j<=n;j++){
+            if(j>=k){
+              cout<<e++<<" ";
+            }
+            else{
+              cout<<d++<<" ";
+            }
           }
-          if(k>0){
-            cout<<(2*i+2)<<" "<<(2*i+1);
-          }
-          else{
-            cout<<(2*i+1)<<" "<<(2*i+2);
-          }
-          --k;
+          cout<<"\n";
         }
-        cout<<"\n";
 
 }
 

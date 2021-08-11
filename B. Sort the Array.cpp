@@ -11,29 +11,35 @@ using namespace std;
 void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);}
 
 void slove(){
-        ll n,m;
-        cin>>n>>m;
-        vector<ll>a(n);
-        vector<ll>b(m);
+        ll n;
+        cin>>n;
+        ll a[n];
         for(int i=0;i<n;i++){
           cin>>a[i];
         }
-        for(int i=0;i<m;i++){
-          cin>>b[i];
-        }
-        ll ans=1000;
-        for(int i=0;i<n;i++){
-          for(int j=0;j<m;j++){
-            if(a[i]==b[j]){
-              ans=min(ans,a[i]);
+        ll s=0,e=0;
+        for(int i=0;i<n-1;i++){
+          if(a[i]>a[i+1]){
+            s=i;e=1;
+            while(a[i]>a[i+1]){
+              ++e;
+              ++i;
             }
-            else{
-              ans=min(ans,a[i]*10+b[j]);
-              ans=min(ans,b[j]*10+a[i]);
-            }
+            break;
           }
         }
-        cout<<ans<<"\n";
+        //cout<<s<<" "<<e<<"\n";
+        reverse(a+s,a+e+s);
+        for(int i=0;i<n-1;i++){
+          if(a[i]>a[i+1]){
+            cout<<"no"<<"\n";
+            return;
+          }
+        }
+        if(e==0){
+          ++e;
+        }
+        cout<<"yes"<<"\n"<<s+1<<" "<<e+s<<"\n";
 
 }
 

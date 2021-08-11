@@ -11,22 +11,32 @@ using namespace std;
 void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);}
 
 void slove(){
-        ll n;
-        cin>>n;
-        ll a[n],b[n];
+        ll n;cin>>n;
+         ll r=0,l=0;
+         string s;
+         cin>>s;
          for(int i=0;i<n;i++){
-           cin>>a[i]>>b[i];
+           if(s[i]=='.'){
+             ++r;
+           }
+           else if(s[i]=='L'){
+             r=0;
+           }
+           else if(s[i]=='R'){
+             l+=r;
+             r=0;
+             while(s[i+1]!='L' && i!=n){
+               ++r;
+               ++i;
+             }
+             if(s[i+1]=='L' && r%2!=0){
+               ++l;
+             }
+             r=0;
+           }
          }
-         int c=0;
-         for(int i=0;i<n;i++){
-          for(int j=0;j<n;j++){
-            if(a[i]==b[j] && i!=j){
-              ++c;
-              break;
-            }
-          }
-         }
-         cout<<n-c<<"\n";
+        cout<<l+r<<"\n";
+
 }
 
 int main()

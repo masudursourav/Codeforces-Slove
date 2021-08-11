@@ -12,19 +12,15 @@ void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout)
 
 void slove(){
         ll n,k;cin>>n>>k;
-        for(int i=0;i<n;i++){
-          if(i>0){
-            cout<<" ";
-          }
-          if(k>0){
-            cout<<(2*i+2)<<" "<<(2*i+1);
-          }
-          else{
-            cout<<(2*i+1)<<" "<<(2*i+2);
-          }
-          --k;
+        float a=0.0,b=0.0,z=0.0;
+        cin>>a>>b;
+        for(int i=0;i<n-1;i++){
+          double x,y;cin>>x>>y;
+          z+=sqrt(((a-x)*(a-x))+((b-y)*(b-y)));
+          a=x,b=y;
         }
-        cout<<"\n";
+        double ans=(k*z)/50.0;
+        printf("%.10lf\n",ans);
 
 }
 

@@ -11,20 +11,15 @@ using namespace std;
 void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);}
 
 void slove(){
-        ll n,k;cin>>n>>k;
-        for(int i=0;i<n;i++){
-          if(i>0){
-            cout<<" ";
-          }
-          if(k>0){
-            cout<<(2*i+2)<<" "<<(2*i+1);
-          }
-          else{
-            cout<<(2*i+1)<<" "<<(2*i+2);
-          }
-          --k;
-        }
-        cout<<"\n";
+    string a,b;
+    cin>>a>>b;
+    size_t found=a.find(b);
+    ll x=0;
+    while(found!=string::npos){
+      found=a.find(b,found+b.size());
+      ++x;
+    }
+    cout<<x<<"\n";
 
 }
 

@@ -11,20 +11,26 @@ using namespace std;
 void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);}
 
 void slove(){
-        ll n,k;cin>>n>>k;
-        for(int i=0;i<n;i++){
-          if(i>0){
-            cout<<" ";
-          }
-          if(k>0){
-            cout<<(2*i+2)<<" "<<(2*i+1);
+        string s;
+        cin>>s;
+        ll L=s.find('a');
+        if(L==string::npos){
+          cout<<"NO"<<"\n";
+          return;
+        }
+        ll n=s.size(),R=L;
+        for(int i=1;i<n;i++){
+          ll pos=s.find('a'+i);
+          if(pos==string::npos ||  (pos!=L-1 && pos!=R+1)){
+            cout<<"NO"<<"\n";
+            return;
           }
           else{
-            cout<<(2*i+1)<<" "<<(2*i+2);
+            L=min(L,pos);
+            R=max(R,pos);
           }
-          --k;
         }
-        cout<<"\n";
+        cout<<"YES"<<"\n";
 
 }
 
@@ -33,7 +39,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-         ll t=1; //cin>>t;
+         ll t=1; cin>>t;
          while(t--){
            slove();
          }

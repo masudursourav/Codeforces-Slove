@@ -9,22 +9,23 @@ using namespace std;
 #define pb push_back
 
 void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);}
-
+ll value(set<ll>& s){
+  return ((*s.rbegin())-(*s.begin()));
+}
 void slove(){
-        ll n,k;cin>>n>>k;
+        ll n;cin>>n;
+        set<ll>a,b;
         for(int i=0;i<n;i++){
-          if(i>0){
-            cout<<" ";
-          }
-          if(k>0){
-            cout<<(2*i+2)<<" "<<(2*i+1);
-          }
-          else{
-            cout<<(2*i+1)<<" "<<(2*i+2);
-          }
-          --k;
+          ll x,y;
+          cin>>x>>y;
+          a.insert(x);
+          b.insert(y);
         }
-        cout<<"\n";
+        if(a.size()!=2 || b.size()!=2){
+          cout<<-1<<"\n";
+          return;
+        }
+        cout<<value(a)*value(b)<<"\n";
 
 }
 

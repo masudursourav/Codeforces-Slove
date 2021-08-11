@@ -11,20 +11,19 @@ using namespace std;
 void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);}
 
 void slove(){
-        ll n,k;cin>>n>>k;
-        for(int i=0;i<n;i++){
-          if(i>0){
-            cout<<" ";
-          }
-          if(k>0){
-            cout<<(2*i+2)<<" "<<(2*i+1);
-          }
-          else{
-            cout<<(2*i+1)<<" "<<(2*i+2);
-          }
-          --k;
+        ll a,b,c,n;
+        cin>>a>>b>>c>>n;
+        if(c>min(a,b)){
+          cout<<-1<<"\n";
+          return;
         }
-        cout<<"\n";
+        ll totalStudentPassed=(a-c)+(b-c)+c;
+        if(totalStudentPassed>=n){
+          cout<<-1<<"\n";
+          return;
+        }
+        cout<<n-totalStudentPassed<<"\n";
+
 
 }
 

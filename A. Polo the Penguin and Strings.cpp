@@ -12,19 +12,28 @@ void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout)
 
 void slove(){
         ll n,k;cin>>n>>k;
+        if(n<k || (k==1 && n!=1)){
+          cout<<-1<<"\n";
+          return;
+        }
+        if(n==1){
+          cout<<'a'<<"\n";
+          return;
+        }
+        k-=2;
+        n-=k;
         for(int i=0;i<n;i++){
-          if(i>0){
-            cout<<" ";
-          }
-          if(k>0){
-            cout<<(2*i+2)<<" "<<(2*i+1);
-          }
-          else{
-            cout<<(2*i+1)<<" "<<(2*i+2);
-          }
-          --k;
+          char c='a'+(i%2);
+          cout<<c;
+        }
+        int temp=2;
+        for(int i=0;i<k;i++){
+          char c='a'+temp;
+          cout<<c;
+          ++temp;
         }
         cout<<"\n";
+
 
 }
 

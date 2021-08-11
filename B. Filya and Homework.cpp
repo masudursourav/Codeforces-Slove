@@ -11,21 +11,31 @@ using namespace std;
 void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);}
 
 void slove(){
-        ll n,k;cin>>n>>k;
+        ll n;
+        cin>>n;
+        set<ll>s;
         for(int i=0;i<n;i++){
-          if(i>0){
-            cout<<" ";
+          ll in;cin>>in;s.insert(in);
+        }
+        if(s.size()<=2){
+          cout<<"YES"<<"\n";
+        }
+        else if(s.size()>=4){
+          cout<<"NO"<<"\n";
+          return;
+        }
+        else{
+          vector<ll>v;
+          for(auto i:s){
+            v.pb(i);
           }
-          if(k>0){
-            cout<<(2*i+2)<<" "<<(2*i+1);
+          if(2*v[1]==(v[0]+v[2])){
+            cout<<"YES"<<"\n";
           }
           else{
-            cout<<(2*i+1)<<" "<<(2*i+2);
+            cout<<"NO"<<"\n";
           }
-          --k;
         }
-        cout<<"\n";
-
 }
 
 int main()

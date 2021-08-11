@@ -12,19 +12,28 @@ void input(){freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout)
 
 void slove(){
         ll n,k;cin>>n>>k;
-        for(int i=0;i<n;i++){
-          if(i>0){
-            cout<<" ";
-          }
-          if(k>0){
-            cout<<(2*i+2)<<" "<<(2*i+1);
+        if(n==(k*k)){
+          cout<<"YES"<<"\n";
+          return;
+        }
+        else if(n<(k*k)){
+          cout<<"NO"<<"\n";
+        }
+        else if(k==1 && n%2==1){
+          cout<<"YES"<<"\n";
+          return;
+        }
+        else{
+          ll sum=n-(k*k);
+          if(sum%2==0){
+            cout<<"YES"<<"\n";
+            return;
           }
           else{
-            cout<<(2*i+1)<<" "<<(2*i+2);
+            cout<<"NO"<<"\n";
+            return;
           }
-          --k;
         }
-        cout<<"\n";
 
 }
 
@@ -33,7 +42,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-         ll t=1; //cin>>t;
+         ll t=1; cin>>t;
          while(t--){
            slove();
          }
